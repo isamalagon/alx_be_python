@@ -5,19 +5,14 @@ while True:
 
     match priority:
         case "high":
-            base_message = f"'{task}' is a high priority task"
+            urgency = "requires immediate attention today!" if time_bound == "yes" else "should be prioritized soon."
         case "medium":
-            base_message = f"'{task}' is a medium priority task"
+            urgency = "is important but flexible." if time_bound == "yes" else "can be scheduled when convenient."
         case "low":
-            base_message = f"'{task}' is a low priority task"
+            urgency = "is low priority but time-sensitive—don't forget!" if time_bound == "yes" else "can be done when you have free time."
         case _:
             print("Invalid priority level. Please enter high, medium, or low.")
             continue
 
-    if time_bound == "yes":
-        final_message = f"{base_message} that requires immediate attention today!"
-    else:
-        final_message = f"{base_message}. Consider completing it when you have free time."
-
-    print("\nReminder:", final_message)
+    print(f"\nReminder: '{task}' is a {priority} priority task that {urgency}")
     break
